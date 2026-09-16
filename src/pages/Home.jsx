@@ -53,7 +53,7 @@ export default function Home() {
                         <p className="fs-4 fw-medium text-white" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.8)' }}>
                             Bienvenido al Panel de Administración y Gestión de Procesos Académicos.
                         </p>
-                        <Link to="/login" className="btn btn-light fw-bold px-4 py-2 mt-2">
+                        <Link to="/auth/register" className="btn btn-light fw-bold px-4 py-2 mt-2">
                             Comenzar Registro
                         </Link>
                     </Carousel.Caption>
@@ -244,7 +244,7 @@ export default function Home() {
                                     <h5 className="fw-bold mb-1 text-dark">¿Eres Administrador o Instructor?</h5>
                                     <p className="mb-0 text-muted">Inicia sesión para gestionar las listas de aprendices y fichas de formación.</p>
                                 </div>
-                                <Link to="/login" className="btn text-white fw-bold px-4 py-2 rounded-3" style={{ backgroundColor: '#39A900' }}>
+                                <Link to="/auth/login" className="btn text-white fw-bold px-4 py-2 rounded-3" style={{ backgroundColor: '#39A900' }}>
                                     <i className="bi bi-box-arrow-in-right me-1"></i> Iniciar Sesión
                                 </Link>
                             </div>

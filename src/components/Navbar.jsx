@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'; // Ajusta la ruta si es necesario
 
 export default function Navbar() {
-    const [userSession, setUserSession] = useState(null);
+    // Se obtiene el estado global y el método logout del contexto
+    const { userSession, logout } = useContext(AuthContext);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
-    // Comprobar la sesión al cargar el componente
-    useEffect(() => {
-        const session = JSON.parse(localStorage.getItem('user_session'));
-        if (session) {
-            setUserSession(session);
-        }
-    }, []);
-
     const handleLogout = () => {
-        localStorage.removeItem('user_session');
-        localStorage.removeItem('user_role');
-        setUserSession(null);
-        navigate('/login');
+        logout();
+        navigate('/auth/login');
     };
 
     const handleSearch = (e) => {
@@ -65,15 +57,15 @@ export default function Navbar() {
                         {/* Menú visible solo si existe sesión de usuario */}
                         {userSession && (
                             <li className="nav-item dropdown" id="adminDropdownNav">
-                                <a
+                                <Link
                                     className="dropdown-toggle text-light text-decoration-none fw-medium px-3 spear-dropdown"
-                                    href="#"
+                                    to="#"
                                     role="button"
                                     data-bs-toggle="dropdown"
                                     aria-expanded="false"
                                 >
                                     Administración
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
                                     <li><Link className="dropdown-item py-2" to="/area/create">Área</Link></li>
                                     <li><Link className="dropdown-item py-2" to="/trainingcenter/create">Centro</Link></li>
@@ -111,8 +103,8 @@ export default function Navbar() {
                     <div className="d-flex align-items-center">
                         {userSession ? (
                             <div className="dropdown">
-                                <a
-                                    href="#"
+                                <Link
+                                    to="#"
                                     className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                                     id="profileDropdown"
                                     data-bs-toggle="dropdown"
@@ -126,7 +118,7 @@ export default function Navbar() {
                                         className="rounded-circle border border-2 border-white shadow-sm me-2 object-fit-cover"
                                     />
                                     <span className="fw-bold d-none d-md-inline small">{userSession.name}</span>
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu dropdown-menu-end border-0 shadow-lg rounded-3 mt-2" aria-labelledby="profileDropdown">
                                     <li>
                                         <div className="px-3 py-2 border-bottom">
@@ -142,7 +134,8 @@ export default function Navbar() {
                                 </ul>
                             </div>
                         ) : (
-                            <Link to="/login" className="btn btn-light text-success fw-bold btn-sm px-3 rounded-3 shadow-sm d-flex align-items-center gap-1">
+                            /* Enlace actualizado a /auth/login */
+                            <Link to="/auth/login" className="btn btn-light text-success fw-bold btn-sm px-3 rounded-3 shadow-sm d-flex align-items-center gap-1">
                                 <i className="bi bi-person-circle"></i> Iniciar Sesión
                             </Link>
                         )}

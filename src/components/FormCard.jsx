@@ -1,7 +1,12 @@
+// creo un componente para las cartas de formulario
+// importo Link para navegabilidad
 import { Link } from 'react-router-dom';
 
+// creo la funcion y la exporto para las cartas de formulario
+// uso los diferentes parametros para pasar elementos de forma dinamica
 export default function FormCard({ title, subtitle, indexTo, children }) {
-  return (
+  // retorno lo que va a mirar el usuario en el formulario
+  return (  
     <div className="py-5 rounded-4" style={{ backgroundColor: '#f4f6f9' }}>
       <div className="container">
         <div className="row justify-content-center">

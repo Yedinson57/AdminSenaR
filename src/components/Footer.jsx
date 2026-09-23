@@ -1,8 +1,12 @@
+// Este es el pie de pagina del aplicativo
 import React from 'react';
 
+// creamos la funcion y la exporto para el footer
 export default function Footer() {
+    // creamos una funcion para mostrar la fecha
     const currentYear = new Date().getFullYear();
 
+    // retornamos el footer traido desde admin sena usando bootstrap
     return (
         <footer className="bg-dark text-white py-5 mt-5 border-top border-secondary">
             <div className="container">

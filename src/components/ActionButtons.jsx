@@ -1,6 +1,9 @@
+// importamos Link desde react-router-dom
 import { Link } from 'react-router-dom';
 
+// creamos la funcion para los botones de accion con sus parametros y la exportamos
 export default function ActionButtons({ showTo, editTo, onDelete }) {
+  // retornamos lo que va a mirar el usuario
   return (
     <div className="d-flex justify-content-center align-items-center gap-2">
       <Link

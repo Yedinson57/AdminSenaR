@@ -1,5 +1,9 @@
+// Esta es la barra de navegacion del aplicativo
+// importo useState y useContext para las funciones al iniciar sesión
 import React, { useState, useContext } from 'react';
+// importo Link y useNavigate para la navegabilidad dentro del navbar
 import { Link, useNavigate } from 'react-router-dom';
+// importamos authcontext para la autenticación
 import { AuthContext } from '../context/AuthContext'; // Ajusta la ruta si es necesario
 
 export default function Navbar() {
@@ -8,11 +12,13 @@ export default function Navbar() {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
+    // Gestion del cierre de sesión, para enviar al formulario de login en caso de cerrar
     const handleLogout = () => {
         logout();
         navigate('/auth/login');
     };
 
+    // simulamos la funcionalidad para la barra de busqueda (solo envia a aprendices)
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchTerm.trim()) {
@@ -20,6 +26,7 @@ export default function Navbar() {
         }
     };
 
+    // return del navbar que se tenia en laravel mediante bootstrap
     return (
         <nav className="navbar navbar-expand-lg navbar-dark shadow" style={{ backgroundColor: '#39A900' }}>
             <div className="container-fluid">

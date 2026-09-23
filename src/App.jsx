@@ -1,5 +1,8 @@
 import React from 'react'
+// importo Routes y Route desde react-router-dom
 import { Routes, Route } from 'react-router-dom'
+
+// Hago uso de AuthProvider para simular autenticacion
 import { AuthProvider } from './context/AuthContext'
 
 // Importo componentes globales
@@ -78,7 +81,7 @@ import ApprenticeIndex from './pages/apprentice/ApprenticeIndex'
 import ApprenticeEdit from './pages/apprentice/ApprenticeEdit'
 import ApprenticeShow from './pages/apprentice/ApprenticeShow'
 
-// importo componentes de ejemplo con sus respectivos cruds
+// importo componentes de ejemplo visibles en el home
 import AnunciosIndex from './pages/anuncios/AnunciosIndex'
 import AnunciosShow from './pages/anuncios/AnunciosShow'
 import OfertasIndex from './pages/ofertas/OfertasIndex'
@@ -86,6 +89,7 @@ import OfertasShow from './pages/ofertas/OfertasShow'
 import EventosIndex from './pages/eventos/EventosIndex'
 import EventosShow from './pages/eventos/EventosShow'
 
+// importo una funcion con diferentes parametros para simular funcionalidad en los cruds
 const resourceRoutes = (base, Index, Create, Show, Edit) => (
   <>
     <Route path={`/${base}`} element={<Index />} />
@@ -97,7 +101,9 @@ const resourceRoutes = (base, Index, Create, Show, Edit) => (
 
 const App = () => {
   return (
+    // Hacemos uso de AuthProvider para la utenticación
     <AuthProvider>
+      {/* importamos componentes globale y creamos rutas */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -108,6 +114,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        {/* Hacemos uso de resourceRoutes para los recursos y simular funcionalidad en los cruds */}
         {resourceRoutes('area', AreaIndex, AreaCreate, AreaShow, AreaEdit)}
         <Route path="/area/areacreate" element={<AreaCreate />} />
         <Route path="/area/areaindex" element={<AreaIndex />} />
